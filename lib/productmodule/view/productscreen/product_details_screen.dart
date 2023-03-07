@@ -1,4 +1,5 @@
-import '../../screenbarrel/screen_barrel.dart';
+
+import '../../../screenbarrel/screen_barrel.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   static const id = "productdetailscreen";

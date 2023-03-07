@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../screenbarrel/screen_barrel.dart';
+import '../../../screenbarrel/screen_barrel.dart';
 
 class ShoppingList extends StatefulWidget {
   static const id = 'shoppinglists';

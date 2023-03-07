@@ -1,6 +1,6 @@
 
 import 'package:http/http.dart' as http;
-import '../../screenbarrel/screen_barrel.dart';
+import '../../../screenbarrel/screen_barrel.dart';
 
 class CocktailViewScreen extends StatefulWidget {
   static const id = "cocktailScreen";
@@ -14,6 +14,7 @@ class CocktailViewScreen extends StatefulWidget {
 class _CocktailViewScreenState extends State<CocktailViewScreen> {
 
     String _endPointUrl = "margarita";
+
 
   // Update the endpointUrl value and rebuild the widget
   void updateEndpointUrl(String newUrl) {
