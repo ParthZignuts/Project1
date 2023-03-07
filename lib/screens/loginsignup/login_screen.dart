@@ -1,5 +1,3 @@
-import 'package:get/route_manager.dart';
-
 import '../../screenbarrel/screen_barrel.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,6 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final ConstSnackbar snackbar=ConstSnackbar();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: Column(
                 children: [
-                  TitleTextWidget(titleText: 'Zignuts Technolab'),
+                  const TitleTextWidget(titleText: 'Zignuts Technolab'),
                   SizedBox(
                     height: 30.h,
                   ),
@@ -88,9 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordTextController.text)
         .then((value) {
       Get.toNamed(ShoppingList.id);
-    }).onError((error, stackTrace) {
-      print("Error ${error.toString()}");
-    });
+      snackbar.successSnackbar();
+    }).onError((error, stackTrace)=>snackbar.failedSnackbar(error.toString()));
   }
 }
 }

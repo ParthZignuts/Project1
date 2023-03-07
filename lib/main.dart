@@ -1,4 +1,3 @@
-
 import 'screenbarrel/screen_barrel.dart';
 
 void main() async {
@@ -18,19 +17,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          theme:ThemeData(
-            inputDecorationTheme: const InputDecorationTheme(
-              labelStyle: TextStyle(color: ColorManager.darkGreen),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: ColorManager.lightGreen,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: ColorManager.darkGreen),
-              ),
-            ),
-          ),
+          theme:themeData(),
           home: const SplashScreen(),
           routes: routes,
         );

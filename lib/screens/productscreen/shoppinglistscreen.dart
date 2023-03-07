@@ -287,7 +287,7 @@ class _ShoppingListState extends State<ShoppingList> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(30).w,
-                  child: TitleTextWidget(titleText: 'Add item'),
+                  child: const TitleTextWidget(titleText: 'Add item'),
                 ),
                 TextFormField(
                   textInputAction: TextInputAction.next,

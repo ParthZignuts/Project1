@@ -1,13 +1,13 @@
 import '../screenbarrel/screen_barrel.dart';
 class ProductQuantityPriceStreambuilder extends StatelessWidget {
-  final Stream<Map<String, int>>? stream;
-  final String quantityOrPrice;
-   ProductQuantityPriceStreambuilder({Key? key,required this.stream,required this.quantityOrPrice}) : super(key: key);
+  final Stream<Map<String, int>>? _stream;
+  final String _quantityOrPrice;
+  const ProductQuantityPriceStreambuilder({Key? key,required Stream<Map<String, int>>? stream,required String quantityOrPrice}) : _quantityOrPrice = quantityOrPrice, _stream = stream, super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Map<String, int>>(
-        stream: stream,
+        stream: _stream,
         builder:
             (BuildContext context,
             AsyncSnapshot<
@@ -26,7 +26,7 @@ class ProductQuantityPriceStreambuilder extends StatelessWidget {
           final data =
           snapshot.data!;
           return Text(
-            '${data[quantityOrPrice]}',
+            '${data[_quantityOrPrice]}',
             style: TextStyle(
               fontSize: 10.sp,
             ),

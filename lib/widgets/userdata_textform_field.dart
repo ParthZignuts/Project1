@@ -1,30 +1,30 @@
 import '../screenbarrel/screen_barrel.dart';
 class UserDataTextFormField extends StatelessWidget {
-  String hintText;
-  IconData icon;
-  bool isPasswordType;
-  TextEditingController controller;
-  String label;
-  TextInputAction textInputAction;
+  final String _hintText;
+  final IconData _icon;
+  final bool _isPasswordType;
+  final TextEditingController _controller;
+  final String _label;
+  final TextInputAction _textInputAction;
 
- UserDataTextFormField({required this.hintText,required this.icon,required this.controller,required this.label,required this.isPasswordType,required this.textInputAction});
+ const UserDataTextFormField({required String hintText,required IconData icon,required TextEditingController controller,required String label,required bool isPasswordType,required TextInputAction textInputAction}) : _textInputAction = textInputAction, _label = label, _controller = controller, _isPasswordType = isPasswordType, _icon = icon, _hintText = hintText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        textInputAction: textInputAction,
-        controller: controller,
-        obscureText: isPasswordType,
+        textInputAction: _textInputAction,
+        controller: _controller,
+        obscureText: _isPasswordType,
         cursorColor: ColorManager.white,
         style: TextStyle(color: ColorManager.white.withOpacity(0.9)),
         validator: (value) {
-          if (label == "password" || label == "confirm password") {
+          if (_label == "password" || _label == "confirm password") {
             if (value == null || value.isEmpty) {
               return 'Please enter text';
             } else if (value.length < 8) {
               return 'Please enter more than 8 characters';
             }
-          } else if (label == "email") {
+          } else if (_label == "email") {
             if (value == null || value.isEmpty) {
               return 'Please enter text';
             } else if (!RegExp(r'^[\w-.]+@([\w-]+\.)+[\w]{2,4}')
@@ -40,11 +40,11 @@ class UserDataTextFormField extends StatelessWidget {
         },
         decoration: InputDecoration(
           prefixIcon: Icon(
-            icon,
+            _icon,
             color: Colors.white70,
           ),
           errorStyle: TextStyle(fontSize: 12.sp, color: ColorManager.red),
-          hintText: hintText,
+          hintText: _hintText,
           hintStyle: TextStyle(color: ColorManager.white.withOpacity(0.9)),
           filled: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,

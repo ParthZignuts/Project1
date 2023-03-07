@@ -12,20 +12,20 @@ class CocktailViewScreen extends StatefulWidget {
 }
 
 class _CocktailViewScreenState extends State<CocktailViewScreen> {
-  ApiUrl url = ApiUrl();
-  String endPointUrl = "margarita";
+
+    String _endPointUrl = "margarita";
 
   // Update the endpointUrl value and rebuild the widget
   void updateEndpointUrl(String newUrl) {
     setState(() {
-      endPointUrl = newUrl;
+      _endPointUrl = newUrl;
     });
   }
 
   //fetch Data from API
   Future<RequestCocktailDataModel> getCocktailData(String id) async {
     try {
-      final response = await http.get(Uri.parse('${url.baseURL}' '?s=$id'));
+      final response = await http.get(Uri.parse('${ApiUrl.baseURL}' '?s=$id'));
       var cocktailData =jsonDecode(response.body.toString());
       if (response.statusCode == 200) {
         print(jsonDecode(response.body.toString()));
@@ -41,11 +41,11 @@ class _CocktailViewScreenState extends State<CocktailViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _cocktailController = TextEditingController();
+    TextEditingController cocktailController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text('Cocktails'),
+        title: const Text('Cocktails'),
         centerTitle: true,
       ),
       body: Column(
@@ -53,30 +53,30 @@ class _CocktailViewScreenState extends State<CocktailViewScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              controller: _cocktailController,
+              controller: cocktailController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 suffixIcon: IconButton(
-                    icon: Icon(Icons.keyboard_arrow_right),
+                    icon: const Icon(Icons.keyboard_arrow_right),
                     onPressed: () {
                       setState(() {
-                        endPointUrl = _cocktailController.text;
+                        _endPointUrl = cocktailController.text;
                       });
                     }),
                 filled: true,
                 hintText: 'Enter Cocktail Name',
-                label: Text('Cocktail'),
+                label: const Text('Cocktail'),
               ),
             ),
           ),
           Expanded(
-            child: FutureBuilder<RequestCocktailDataModel>(
-              future: getCocktailData(endPointUrl),
+            child:FutureBuilder<RequestCocktailDataModel>(
+              future: getCocktailData(_endPointUrl),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child:  CircularProgressIndicator());
                 } else {
                   return ListView.builder(
                     itemCount: snapshot.data?.drinks == null
@@ -112,7 +112,7 @@ class _CocktailViewScreenState extends State<CocktailViewScreen> {
                                     children: [
                                       Text(
                                         "${snapshot.data!.drinks![index].strDrink}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.w600,
                                             color: Colors.lightGreen),

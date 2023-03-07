@@ -1,5 +1,3 @@
-import 'package:get/route_manager.dart';
-
 import '../../screenbarrel/screen_barrel.dart';
 class ResetPasswordScreen extends StatefulWidget {
   static const id="resetpasswordscreen";
@@ -12,6 +10,7 @@ class ResetPasswordScreen extends StatefulWidget {
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   final TextEditingController _emailTextController = TextEditingController();
+  final ConstSnackbar snackbar=ConstSnackbar();
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -63,7 +62,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       if(_formKey.currentState!.validate()) {
         FirebaseAuth.instance.sendPasswordResetEmail(email: _emailTextController.text).then((value) {
          Get.toNamed(LoginScreen.id);
-        });
+         snackbar.resetSuccessSnackbar();
+        }).onError((error, stackTrace) => snackbar.failedSnackbar(error.toString()));
       }
     }
   }
