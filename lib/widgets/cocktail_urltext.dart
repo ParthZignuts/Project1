@@ -1,9 +1,9 @@
 
 import '../screenbarrel/screen_barrel.dart';
 class CocktailImageUrlText extends StatelessWidget {
-  String cocktailUrlText;
+  final String _cocktailUrlText;
 
-  CocktailImageUrlText({Key? key, required this.cocktailUrlText}) : super(key: key);
+  const CocktailImageUrlText({Key? key, required String cocktailUrlText}) : _cocktailUrlText = cocktailUrlText, super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class CocktailImageUrlText extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
 
       ),
-      child: Image.network(cocktailUrlText,fit: BoxFit.fill),
+      child: Image.network(_cocktailUrlText,fit: BoxFit.fill),
     );
   }
 }

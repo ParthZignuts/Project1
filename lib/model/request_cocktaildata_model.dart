@@ -43,18 +43,18 @@ class Drinks {
         String? strDrinkThumb,
      }) {
     if (idDrink != null) {
-      this._idDrink = idDrink;
+      _idDrink = idDrink;
     }
     if (strDrink != null) {
-      this._strDrink = strDrink;
+      _strDrink = strDrink;
     }
 
     if (strInstructions != null) {
-      this._strInstructions = strInstructions;
+      _strInstructions = strInstructions;
     }
 
     if (strDrinkThumb != null) {
-      this._strDrinkThumb = strDrinkThumb;
+      _strDrinkThumb = strDrinkThumb;
     }
 
   }

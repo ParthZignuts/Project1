@@ -1,5 +1,3 @@
-import 'package:assignment3/screens/coctailapi/cocktail_view_screen.dart';
-
 import '../screenbarrel/screen_barrel.dart';
 
 final Map<String,Widget Function(BuildContext)> routes=

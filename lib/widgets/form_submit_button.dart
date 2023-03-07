@@ -1,9 +1,9 @@
 import '../screenbarrel/screen_barrel.dart';
 
 class FormSubmitButton extends StatelessWidget {
-  final String buttonText;
-  final Function onSubmitForm;
-   const FormSubmitButton({required this.buttonText, required this.onSubmitForm,Key? key});
+  final String _buttonText;
+  final Function _onSubmitForm;
+   const FormSubmitButton({required String buttonText, required Function onSubmitForm,Key? key}) : _onSubmitForm = onSubmitForm, _buttonText = buttonText;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class FormSubmitButton extends StatelessWidget {
       margin: const EdgeInsets.only(top: 10,bottom: 20).r,
       child: ElevatedButton(
         onPressed: () {
-          onSubmitForm();
+          _onSubmitForm();
         },
         style: ElevatedButton.styleFrom(
             backgroundColor: ColorManager.white,
@@ -21,7 +21,7 @@ class FormSubmitButton extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30).w)
         ),
         child: Text(
-          buttonText,
+          _buttonText,
           style:TextStyle(
             color: ColorManager.black2,
             fontWeight: FontWeight.bold,

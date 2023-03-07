@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get/route_manager.dart';
-
 import '../../screenbarrel/screen_barrel.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -16,8 +14,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _usernameTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
-  final TextEditingController _confirmPasswordTextController =
-      TextEditingController();
+  final TextEditingController _confirmPasswordTextController = TextEditingController();
+  final ConstSnackbar snackbar =ConstSnackbar();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -121,9 +119,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               .doc(value.user!.email)
               .set({'Email': auth.email, 'Uid': auth.uid});
           Get.toNamed(ShoppingList.id);
-        }).onError((error, stackTrace) {
-          print("Error ${error.toString()}");
-        });
+          snackbar.successSnackbar();
+        }).onError((error, stackTrace) =>snackbar.failedSnackbar(error.toString()));
       }
     }
   }
