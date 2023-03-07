@@ -1,6 +1,6 @@
 
 
-class RequestCocktailDataModel {
+class RequestCocktailDataModel  {
   List<Drinks>? _drinks;
 
   RequestCocktailDataModel({List<Drinks>? drinks}) {
@@ -30,7 +30,7 @@ class RequestCocktailDataModel {
   }
 }
 
-class Drinks {
+class Drinks{
   String? _idDrink;
   String? _strDrink;
   String? _strInstructions;
@@ -79,7 +79,6 @@ class Drinks {
      _strDrinkThumb = json['strDrinkThumb'];
 
   }
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['idDrink'] = this._idDrink;

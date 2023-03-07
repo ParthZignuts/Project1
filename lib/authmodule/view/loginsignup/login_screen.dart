@@ -1,4 +1,4 @@
-import '../../screenbarrel/screen_barrel.dart';
+import '../../../screenbarrel/screen_barrel.dart';
 
 class LoginScreen extends StatefulWidget {
   static const id = "loginscreen";
@@ -84,8 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(
         email: _emailTextController.text,
-        password: _passwordTextController.text)
-        .then((value) {
+        password: _passwordTextController.text).then((value) {
       Get.toNamed(ShoppingList.id);
       snackbar.successSnackbar();
     }).onError((error, stackTrace)=>snackbar.failedSnackbar(error.toString()));

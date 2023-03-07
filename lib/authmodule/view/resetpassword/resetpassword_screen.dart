@@ -1,4 +1,4 @@
-import '../../screenbarrel/screen_barrel.dart';
+import '../../../../screenbarrel/screen_barrel.dart';
 class ResetPasswordScreen extends StatefulWidget {
   static const id="resetpasswordscreen";
   const ResetPasswordScreen({Key? key}) : super(key: key);
