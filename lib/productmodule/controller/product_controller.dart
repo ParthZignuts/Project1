@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:uuid/uuid.dart';
+import '../../screenbarrel/screen_barrel.dart';
 
 class ListController {
   User? get _user => FirebaseAuth.instance.currentUser;

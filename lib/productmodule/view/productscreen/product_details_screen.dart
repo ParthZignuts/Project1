@@ -218,11 +218,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             .value as int,
         isIncrease: val,
         onError: (error) {
-          print(error);
+        Get.snackbar(
+                'Error',error.toString(),
+                backgroundColor: Colors.red,
+                snackPosition: SnackPosition.TOP);
+
         },
         onSuccess: (quntity) {
-          print(
-              'Incement quantity:$quntity');
+          Get.snackbar(
+              'Quantity',quntity.toString(),
+              backgroundColor: Colors.green,
+              snackPosition: SnackPosition.TOP);
         });
   }
 }

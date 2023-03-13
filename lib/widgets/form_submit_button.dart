@@ -3,7 +3,7 @@ import '../screenbarrel/screen_barrel.dart';
 class FormSubmitButton extends StatelessWidget {
   final String _buttonText;
   final Function _onSubmitForm;
-   const FormSubmitButton({required String buttonText, required Function onSubmitForm,Key? key}) : _onSubmitForm = onSubmitForm, _buttonText = buttonText;
+   const FormSubmitButton({super.key, required String buttonText, required Function onSubmitForm}) : _onSubmitForm = onSubmitForm, _buttonText = buttonText;
 
   @override
   Widget build(BuildContext context) {

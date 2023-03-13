@@ -35,3 +35,4 @@ export 'package:assignment3/resources/const_snackbar.dart';
 export 'package:get/get.dart';
 export '../productmodule/controller/product_controller.dart';
 export 'package:assignment3/cocktailapimodule/model/request_cocktaildata_model.dart';
+export 'package:uuid/uuid.dart';

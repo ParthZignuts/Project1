@@ -1,22 +1,23 @@
 import 'package:http/http.dart' as http;
 import '../../screenbarrel/screen_barrel.dart';
 
-class CocktailController extends GetxController{
+class CocktailController extends GetxController {
+  var cocktail = <RequestCocktailDataModel>[].obs;
 
-  var cocktail=<RequestCocktailDataModel>[].obs;
-
-  Future<List<RequestCocktailDataModel>> getCocktailData(String id) async{
+  Future<List<RequestCocktailDataModel>> getCocktailData(String id) async {
     try {
       final response = await http.get(Uri.parse('${ApiUrl.baseURL}' '?s=$id'));
-      var cocktailData =jsonDecode(response.body.toString());
+      var cocktailData = jsonDecode(response.body.toString());
       if (response.statusCode == 200) {
-        print(jsonDecode(response.body.toString()));
-        cocktail= RequestCocktailDataModel.fromJson(cocktailData) as RxList<RequestCocktailDataModel>;
+        cocktail = RequestCocktailDataModel.fromJson(cocktailData)
+            as RxList<RequestCocktailDataModel>;
       }
       return cocktail;
     } catch (e) {
-      print(e.toString());
-      throw e;
+      throw Get.snackbar(
+          'Error',e.toString(),
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.TOP);
     }
   }
 }
